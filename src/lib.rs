@@ -1897,11 +1897,11 @@ mod tests {
         let mut ll = xll!(1, 2, 3, 4);
         let mut cursor = ll.cursor_front_mut();
         for i in 1..=4 {
-            assert_eq!(Some(i), cursor.current().map(|n| *n));
+            assert_eq!(Some(i), cursor.current().copied());
             *cursor.current().unwrap() += 1;
-            assert_eq!(Some(i + 1), cursor.current().map(|n| *n));
+            assert_eq!(Some(i + 1), cursor.current().copied());
             *cursor.current().unwrap() -= 1;
-            assert_eq!(Some(i), cursor.current().map(|n| *n));
+            assert_eq!(Some(i), cursor.current().copied());
             cursor.move_next();
         }
         for i in 1..=4 {
